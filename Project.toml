@@ -1,4 +1,5 @@
 name = "PEtabSciMLTestsuite"
+uuid = "72d9a028-52aa-11f1-246d-79b35f1c86f9"
 version = "1.0.0"
 
 [deps]
@@ -16,3 +17,10 @@ Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
 SimpleUnPack = "ce78b400-467f-4804-87d8-8f486da07d0a"
 StableRNGs = "860ef19b-820b-49d6-a774-d7a799459cd3"
 YAML = "ddb6d928-2868-570f-bddf-ab3f9cf99eb6"
+
+[extras]
+SafeTestsets = "1bc83da4-3b8d-516f-aca4-4fe02f6d838f"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["SafeTestsets", "Test"]
