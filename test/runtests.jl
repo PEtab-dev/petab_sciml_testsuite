@@ -1,9 +1,13 @@
 using SafeTestsets
 
+@safetestset "Aqua quality check" begin
+    include("aqua.jl")
+end
+
 @safetestset "ML-model import" begin
-    include(joinpath(@__DIR__, "ml_import.jl"))
+    include("ml_import.jl")
 end
 
 @safetestset "SciML problem import" begin
-    include(joinpath(@__DIR__, "sciml_problem_import.jl"))
+    include("sciml_problem_import.jl")
 end
