@@ -1,9 +1,8 @@
 """Neural network import test generation"""
 
-import os
 import torch
 from torch import nn
-from test_cases.net_import.helper import make_yaml, test_nn
+from pysrc.ml_import_helper import make_yaml, test_nn
 
 class Net(nn.Module):
     def __init__(self) -> None:
@@ -16,8 +15,9 @@ class Net(nn.Module):
         x = self.layer2(x)
         return x
 
-# Create a pytorch module, convert it to PEtab SciML, then save it to disk.
-dir_save = os.path.join(os.getcwd(), 'test_cases', 'net_import', "003")
-net = Net()
-make_yaml(net, dir_save)
-test_nn(net, dir_save, ["layer1", "layer2"])
+
+def ml_model_import_003(dir_save):
+    net = Net()
+    make_yaml(net, dir_save)
+    test_nn(net, dir_save, ["layer1", "layer2"])
+    return 0

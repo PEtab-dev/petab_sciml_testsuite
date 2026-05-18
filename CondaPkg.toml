@@ -1,0 +1,8 @@
+channels = ["conda-forge"]
+
+[deps]
+python = ">=3.13,<3.14"
+
+[pip.deps]
+"petab-sciml" = "@ git+https://github.com/PEtab-dev/petab_sciml.git@main"
+torch = ""

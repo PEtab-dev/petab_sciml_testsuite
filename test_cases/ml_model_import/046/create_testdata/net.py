@@ -3,8 +3,8 @@
 import os
 import torch
 from torch import nn
-from torch.nn import functional as F
-from test_cases.net_import.helper import make_yaml, test_nn
+from pysrc.ml_import_helper import make_yaml, test_nn
+
 
 class Net(nn.Module):
     def __init__(self) -> None:
@@ -21,8 +21,9 @@ class Net(nn.Module):
         x = self.layer2(x)
         return x
 
-# Create a pytorch module, convert it to PEtab SciML, then save it to disk.
-dir_save = os.path.join(os.getcwd(), 'test_cases', 'net_import', "046")
-net = Net()
-make_yaml(net, dir_save)
-test_nn(net, dir_save, ["layer1", "layer2", "norm1"])
+
+def ml_model_import_046(dir_save):
+    net = Net()
+    make_yaml(net, dir_save)
+    test_nn(net, dir_save, ["layer1", "layer2", "norm1"])
+    return 0
