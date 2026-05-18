@@ -1,5 +1,6 @@
 module PEtabSciMLTestsuite
 
+import CondaPkg
 import CSV
 using ComponentArrays: ComponentArray, ComponentVector
 import DataFrames: DataFrame, rename!, vcat
