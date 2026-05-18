@@ -1,6 +1,7 @@
 using Lux, StableRNGs
 using PEtabSciMLTestsuite: save_ps, save_io, write_yaml
 
+# runic: off
 nn_model = @compact(
     layer1 = Conv((5, 5, 5), 3 => 4; cross_correlation = true),
     layer2 = Conv((5, 5, 5), 4 => 1; cross_correlation = true),
@@ -13,6 +14,7 @@ nn_model = @compact(
     out = layer2(embed)
     @return out
 end
+# runic: on
 
 # TODO: Issue on Float64 input required
 input_order_jl, input_order_py = ["W", "H", "D", "C", "N"], ["N", "C", "D", "H", "W"]

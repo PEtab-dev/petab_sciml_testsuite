@@ -1,6 +1,7 @@
 using Lux, StableRNGs
 using PEtabSciMLTestsuite: save_ps, save_io, write_yaml
 
+# runic: off
 nn_model = @compact(
     layer1 = Bilinear((10, 10) => 5, Lux.tanh),
     layer2 = Dense(5, 5, Lux.tanh),
@@ -11,6 +12,7 @@ nn_model = @compact(
     out = layer3(embed)
     @return out
 end
+# runic: on
 
 input_order_jl, input_order_py = ["W"], ["W"]
 output_order_jl, output_order_py = ["W"], ["W"]

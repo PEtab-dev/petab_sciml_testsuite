@@ -1,6 +1,7 @@
 using Lux, StableRNGs
 using PEtabSciMLTestsuite: save_ps, save_io, write_yaml
 
+# runic: off
 nn_model = @compact(
     layer1 = ConvTranspose((5, 5), 1 => 2; cross_correlation = true),
     layer2 = ConvTranspose((2, 5), 2 => 1; cross_correlation = true)
@@ -9,6 +10,7 @@ nn_model = @compact(
     out = layer2(embed)
     @return out
 end
+# runic: on
 
 input_order_jl, input_order_py = ["W", "H", "C"], ["C", "H", "W"]
 output_order_jl, output_order_py = ["W", "H", "C"], ["C", "H", "W"]

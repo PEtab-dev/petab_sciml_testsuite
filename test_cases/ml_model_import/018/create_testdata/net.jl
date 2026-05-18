@@ -1,6 +1,7 @@
 using Lux, StableRNGs
 using PEtabSciMLTestsuite: save_ps, save_io, write_yaml
 
+# runic: off
 nn_model = @compact(
     conv1 = Conv((5, 5), 1 => 6; cross_correlation = true),
     conv2 = Conv((5, 5), 6 => 16; cross_correlation = true),

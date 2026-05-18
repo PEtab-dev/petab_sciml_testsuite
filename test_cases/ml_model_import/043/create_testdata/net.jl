@@ -1,6 +1,7 @@
 using Lux, StableRNGs
 using PEtabSciMLTestsuite: save_ps, save_io, write_yaml
 
+# runic: off
 nn_model = @compact(
     layer1 = Dense(5 => 50),
     layer2 = Dense(50 => 2),
@@ -11,6 +12,7 @@ nn_model = @compact(
     out = layer2(embed)
     @return out
 end
+# runic: on
 
 # TODO: Issue on Float64 input required
 input_order_jl, input_order_py = ["W", "N"], ["N", "W"]

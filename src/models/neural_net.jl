@@ -21,6 +21,8 @@ function get_net_models(nets_info::Dict)
     return out
 end
 
+# Runic.jl cannot deadl with the @compact macro
+# runic: off
 function get_net1()
     rng = StableRNGs.StableRNG(1)
     nn_model = @compact(
@@ -100,3 +102,4 @@ function get_net6()
     _, st = Lux.setup(rng, nn_model)
     return st, nn_model
 end
+# runic: on

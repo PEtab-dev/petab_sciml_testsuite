@@ -1,10 +1,12 @@
 using Lux, StableRNGs
 using PEtabSciMLTestsuite: save_ps, save_io, write_yaml
 
+# runic: off
 nn_model = @compact(flatten1 = FlattenLayer()) do x
     out = flatten1(x)
     @return out
 end
+# runic: on
 
 input_order_jl, input_order_py = ["W", "H", "C", "N"], ["N", "C", "H", "W"]
 output_order_jl, output_order_py = ["W", "N"], ["N", "W"]

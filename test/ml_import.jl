@@ -17,7 +17,7 @@ function get_py_script(test_case)
     runpy = pyimport("runpy")
     sys."path".insert(0, dir_py_script)
     sys."path".insert(0, pysrc_parent)
-    return runpy.run_path(path_py_script, run_name="__main__")
+    return runpy.run_path(path_py_script, run_name = "__main__")
 end
 
 PEtabSciMLTestsuite.create_ml_import_tests()
