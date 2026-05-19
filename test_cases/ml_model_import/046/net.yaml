@@ -10,6 +10,7 @@ layers:
     eps: 1.0e-05
     num_features: 3
     affine: true
+    bias: true
 - layer_id: norm2
   layer_type: InstanceNorm1d
   args:
@@ -18,6 +19,7 @@ layers:
     eps: 1.0e-05
     num_features: 4
     affine: false
+    bias: false
 - layer_id: layer1
   layer_type: Conv1d
   args:

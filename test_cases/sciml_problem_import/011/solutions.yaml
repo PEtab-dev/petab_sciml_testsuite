@@ -5,6 +5,6 @@ grad_files:
   mech: "grad_mech.tsv"
   net2: "grad_net2.hdf5"
   net1: "grad_net1.hdf5"
-llh: 33.02909543616718
+llh: 33.02909543616689
 tol_simulations: 0.001
 tol_llh: 0.001

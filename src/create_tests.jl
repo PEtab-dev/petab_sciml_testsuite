@@ -18,7 +18,9 @@ function save_hybrid_test_values(
 
     objective = compute_objective(x)
     save_hybrid_yaml(objective, nets_info, estimate_net_parameters, prior_id, dir_save)
-    save_grad(x, compute_objective, nn_models, estimate_net_parameters, freeze_info, dir_save)
+    save_grad(
+        x, compute_objective, nn_models, estimate_net_parameters, freeze_info, dir_save
+    )
     save_simulations(x, llh_id, ode_problem, nn_models, measurements, inputs, dir_save)
     return nothing
 end
@@ -71,19 +73,23 @@ function create_petab_files(
     return nothing
 end
 
-function create_hybrid_tests()
+function create_sciml_problem_import_tests()
+    @info "Creating SciML problem import tests"
     dir_tests = joinpath(@__DIR__, "..", "test_cases", "sciml_problem_import")
-    test_cases = filter(x -> x != "README.md", readdir(dir_tests))
-    for test_case in test_cases
-        @info "Hybrid test-case $(test_case)"
+    test_cases = filter(x -> x ∉ ["README.md", "__pycache__"], readdir(dir_tests))
+    for (i, test_case) in pairs(test_cases)
+        if i == 1 || i % 5 == 0
+            @info "SciML import test-case $(test_case)"
+        end
         include(joinpath(dir_tests, test_case, "create.jl"))
     end
     return nothing
 end
 
 function create_initialization_tests()
+    @info "Creating SciML initialization tests"
     dir_tests = joinpath(@__DIR__, "..", "test_cases", "initialization")
-    test_cases = filter(x -> x != "README.md", readdir(dir_tests))
+    test_cases = filter(x -> x ∉ ["README.md", "__pycache__"], readdir(dir_tests))
     for test_case in test_cases
         @info "Initialization test-case $(test_case)"
         include(joinpath(dir_tests, test_case, "create.jl"))
@@ -91,11 +97,14 @@ function create_initialization_tests()
     return nothing
 end
 
-function create_net_import_tests()
+function create_ml_import_tests()
+    @info "Creating values for ML import tests"
     dir_tests = joinpath(@__DIR__, "..", "test_cases", "ml_model_import")
-    test_cases = filter(!(x -> x in ["README.md", "helper.py"]), readdir(dir_tests))
-    for test_case in test_cases
-        @info "Net-import test-case $(test_case)"
+    test_cases = filter(x -> x ∉ ["README.md", "__pycache__"], readdir(dir_tests))
+    for (i, test_case) in pairs(test_cases)
+        if i == 1 || i % 5 == 0
+            @info "ML-import test-case $(test_case)"
+        end
         include(joinpath(dir_tests, test_case, "create_testdata", "net.jl"))
     end
     return nothing

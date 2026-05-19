@@ -9,6 +9,7 @@ layers:
     - 20
     eps: 1.0e-05
     elementwise_affine: true
+    bias: true
 - layer_id: layer1
   layer_type: Linear
   args:

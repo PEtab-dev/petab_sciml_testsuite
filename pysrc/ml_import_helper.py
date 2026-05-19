@@ -4,6 +4,7 @@ import h5py
 
 from petab_sciml.standard import Input, NNModel, NNModelStandard
 
+
 def make_yaml(net, dir_save, net_name="net.yaml", inputs = ["input0"]):
     inputs = [Input(input_id=input_name) for input_name in inputs]
     net_model = NNModel.from_pytorch_module(
@@ -17,12 +18,15 @@ def make_yaml(net, dir_save, net_name="net.yaml", inputs = ["input0"]):
     return None
 
 
-def test_nn(net, dir_save, layer_names, dropout=False, atol=1e-3, n_input_arguments = 1):
+def test_nn(net, dir_save, layer_names, dropout=False, atol=1e-3,
+            n_input_arguments = 1):
     for i in range(1, 4):
         if not layer_names is None:
             for layer_name in layer_names:
                 layer = getattr(net, layer_name)
-                ps_h5 = h5py.File(os.path.join(dir_save, "net_ps_" + str(i) + ".hdf5"), "r")
+                ps_h5 = h5py.File(
+                    os.path.join(dir_save, "net_ps_" + str(i) + ".hdf5"), "r"
+                )
                 ps_weight = ps_h5["parameters"]["net0"][layer_name]["weight"][:]
                 with torch.no_grad():
                     layer.weight[:] = torch.from_numpy(ps_weight)
@@ -32,18 +36,28 @@ def test_nn(net, dir_save, layer_names, dropout=False, atol=1e-3, n_input_argume
                         layer.bias[:] = torch.from_numpy(ps_bias)
 
         if n_input_arguments == 1:
-            input_h5 = h5py.File(os.path.join(dir_save, "net_input_" + str(i) + ".hdf5"), "r")
+            input_h5 = h5py.File(
+                os.path.join(dir_save, "net_input_" + str(i) + ".hdf5"), "r"
+            )
             input = torch.from_numpy(input_h5["inputs"]["input0"]["data"][:])
         else:
             input = []
             for j in range(n_input_arguments):
                 input_h5 = h5py.File(
-                    os.path.join(dir_save, "net_input_" + str(i) + "_arg" + str(j) +  ".hdf5"), "r")
-                _input = torch.from_numpy(input_h5["inputs"]["input0"]["data"][:])
+                    os.path.join(
+                        dir_save, "net_input_" + str(i) + "_arg" + str(j) +  ".hdf5"), "r"
+                    )
+                _input = torch.from_numpy(
+                    input_h5["inputs"]["input0"]["data"][:]
+                )
                 input.append(_input)
 
-        output_h5 = h5py.File(os.path.join(dir_save, "net_output_" + str(i) + ".hdf5"), "r")
-        output_ref = torch.from_numpy(output_h5["outputs"]["output0"]["data"][:])
+        output_h5 = h5py.File(
+            os.path.join(dir_save, "net_output_" + str(i) + ".hdf5"), "r"
+        )
+        output_ref = torch.from_numpy(
+            output_h5["outputs"]["output0"]["data"][:]
+        )
         if dropout is False:
             if n_input_arguments == 1:
                 output = net.forward(input)

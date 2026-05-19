@@ -1,7 +1,9 @@
 name = "PEtabSciMLTestsuite"
+uuid = "72d9a028-52aa-11f1-246d-79b35f1c86f9"
 version = "1.0.0"
 
 [deps]
+CondaPkg = "992eb4ea-22a4-4c89-a5bb-47a3300528ab"
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
 ComponentArrays = "b0b7db55-cfe3-40fc-9ded-d10e2dbeff66"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
@@ -10,7 +12,34 @@ FiniteDifferences = "26cc04aa-876d-5657-8c51-4c34ba976000"
 HDF5 = "f67ccb44-e63f-5c2f-98bd-6dc0ccc4ba2f"
 Lux = "b2108857-7c20-44ae-9111-449ecde12c47"
 OrdinaryDiffEqVerner = "79d7bb75-1356-48c1-b8c0-6832512096c2"
-Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
 SimpleUnPack = "ce78b400-467f-4804-87d8-8f486da07d0a"
 StableRNGs = "860ef19b-820b-49d6-a774-d7a799459cd3"
 YAML = "ddb6d928-2868-570f-bddf-ab3f9cf99eb6"
+
+[compat]
+Aqua = "0.8.14"
+CSV = "0.10"
+ComponentArrays = "0.15"
+CondaPkg = "0.2"
+DataFrames = "1.8"
+Distributions = "0.25"
+FiniteDifferences = "0.12"
+HDF5 = "0.17"
+Lux = "1.31"
+OrdinaryDiffEqVerner = "2.1"
+PythonCall = "0.9"
+SafeTestsets = "0.1"
+SimpleUnPack = "1.1"
+StableRNGs = "1.0.4"
+Test = "1.10"
+YAML = "0.4"
+julia = "1.10"
+
+[extras]
+Aqua = "4c88cf16-eb10-579e-8560-4a9242c79595"
+PythonCall = "6099a3de-0909-46bc-b1f4-468b9a2dfc0d"
+SafeTestsets = "1bc83da4-3b8d-516f-aca4-4fe02f6d838f"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Aqua", "PythonCall", "SafeTestsets", "Test"]
