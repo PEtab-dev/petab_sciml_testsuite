@@ -21,7 +21,7 @@ function get_net_models(nets_info::Dict)
     return out
 end
 
-# Runic.jl cannot deadl with the @compact macro
+# Runic.jl cannot deal with the @compact macro
 # runic: off
 function get_net1()
     rng = StableRNGs.StableRNG(1)
