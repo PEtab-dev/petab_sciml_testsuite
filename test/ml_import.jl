@@ -6,7 +6,7 @@
 
 using PEtabSciMLTestsuite, PythonCall, Test
 
-function get_py_script(test_case)
+function run_py_script(test_case)
     pysrc_parent = joinpath(@__DIR__, "..")
     path_py_script = joinpath(
         @__DIR__, "..", "test_cases", "ml_model_import", test_case, "create_testdata",
@@ -22,14 +22,16 @@ end
 
 PEtabSciMLTestsuite.create_ml_import_tests()
 
+dir_test_cases = joinpath(@__DIR__, "..", "test_cases", "ml_model_import")
+test_cases = filter(s -> startswith(s, r"^[0-9]{3}"), readdir(dir_test_cases))
 @testset "Neural network import" begin
-    for i in 1:53
+    for (i, test_case) in pairs(test_cases)
         if i == 1 || i % 5 == 0
             @info "ML import test-case $i"
         end
         test_case = i > 9 ? "0$(i)" : "00$(i)"
         dir_save = joinpath(@__DIR__, "..", "test_cases", "ml_model_import", test_case)
-        py_script = get_py_script(test_case)
+        py_script = run_py_script(test_case)
         ret = py_script["ml_model_import_$(test_case)"](dir_save)
         @test pyconvert(Int64, ret) == 0
     end
