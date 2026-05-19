@@ -1,6 +1,6 @@
 # PEtab SciML test suite
 
-[![Build Status](https://https://github.com/PEtab-dev/petab_sciml_testsuite/actions/workflows/CI.yml/badge.svg?branch=main)](https://https://github.com/PEtab-dev/petab_sciml_testsuite/actions/workflows/CI.yml?query=branch%3Amain)
+[![Build Status](https://github.com/PEtab-dev/petab_sciml_testsuite/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/PEtab-dev/petab_sciml_testsuite/actions/workflows/CI.yml?query=branch%3Amain)
 [![Aqua QA](https://raw.githubusercontent.com/JuliaTesting/Aqua.jl/master/badge.svg)](https://github.com/JuliaTesting/Aqua.jl)
 [![code style: runic](https://img.shields.io/badge/code_style-%E1%9A%B1%E1%9A%A2%E1%9A%BE%E1%9B%81%E1%9A%B2-black)](https://github.com/fredrikekre/Runic.jl)
 
@@ -60,9 +60,9 @@ Currently, supported and tested layers and activation functions are:
 - **Layers**: `Conv1-3d`, `ConvTranspose1-3d`, `AvgPool1-3d`, `MaxPool1-3d`, `LPPool1-3d`,
   `AdaptiveMaxPool1-3d`, `AdaptiveMeanPool1-3d`, `BatchNorm1-3d`, `InstanceNorm1-3d`,
   `LayerNorm`, `Dropout1-3d`, `Dropout`, `AlphaDropout`, `Linear`, `Bilinear` and `Flatten`.
-- **Activation**: `relu`, `relu6`, `hardtanh`, `hardswish`, `selu`, `leaky_relu`, `gelu`,
-  `logsigmoid`, `tanhshrink`, `softsign`, `softplus`, `tanh`, `sigmoid`, `hardsigmoid`,
-  `mish`, `elu`, `celu`, `softmax` and `log_softmax`.
+- **Activation**: `relu`, `relu6`, `hardtanh`, `hardswish`, `selu`, `silu` `leaky_relu`,
+  `gelu`, `logsigmoid`, `tanhshrink`, `softsign`, `softplus`, `tanh`, `sigmoid`,
+  `hardsigmoid`, `mish`, `elu`, `celu`, `softmax` and `log_softmax`.
 
 A list of supported layers and activation functions for each tool supporting PEtab SciML can
 be found in the PEtab SciML
