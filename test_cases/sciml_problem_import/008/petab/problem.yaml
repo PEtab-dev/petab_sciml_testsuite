@@ -22,7 +22,7 @@ extensions:
     hybridization_files:
       - "hybridization.tsv"
     required: true
-    neural_nets:
+    neural_networks:
       net2:
         location: "net2.yaml"
         pre_initialization: true

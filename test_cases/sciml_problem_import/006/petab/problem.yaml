@@ -21,7 +21,7 @@ extensions:
     hybridization_files:
       - "hybridization.tsv"
     required: true
-    neural_nets:
+    neural_networks:
       net1:
         location: "net1.yaml"
         pre_initialization: true
