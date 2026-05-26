@@ -23,13 +23,13 @@ function save_petab_yaml(
 
     ext = Dict(
         :hybridization_files => ["hybridization.tsv"],
-        :neural_nets => Dict(),
+        :neural_networks => Dict(),
         :array_files => String[],
         :version => "0.1.0",
         :required => true
     )
     for (net_id, net_info) in nets_info
-        ext[:neural_nets][net_id] = Dict(
+        ext[:neural_networks][net_id] = Dict(
             :location => "$(net_id).yaml",
             :format => "YAML",
             :pre_initialization => net_info[:pre_initialization]
