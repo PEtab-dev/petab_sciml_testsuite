@@ -18,7 +18,7 @@ YAML = "ddb6d928-2868-570f-bddf-ab3f9cf99eb6"
 
 [compat]
 Aqua = "0.8.14"
-CSV = "0.10"
+CSV = "0.10, 1.0"
 ComponentArrays = "0.15"
 CondaPkg = "0.2"
 DataFrames = "1.8"
